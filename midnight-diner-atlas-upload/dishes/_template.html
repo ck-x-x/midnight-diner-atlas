@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 改這裡 1：中文料理名 -->
+  <title>料理名稱｜深夜食堂料理圖鑑</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<!-- 改這裡 2：data-id 填入與檔名、data/dishes.js 相同的 id -->
+<body data-root=".." data-id="dish-id">
+  <header class="site-header" id="site-header"></header>
+
+  <main class="page">
+    <!-- 標題與集數由 site.js 依 data/dishes.js 產生，不要手動填寫 -->
+    <div id="dish-hero"></div>
+
+    <!-- 改這裡 3：以下四個段落的內容。順序、id、標題不可更動 -->
+    <section id="story">
+      <h2>劇中登場</h2>
+      <p>誰點了這道菜、為什麼。60 字以內，不寫結局。</p>
+    </section>
+
+    <section id="ingredients">
+      <h2>材料（1 人份）</h2>
+      <ul class="ingredients">
+        <li>材料名<span>份量</span></li>
+        <li>材料名<span>份量</span></li>
+      </ul>
+    </section>
+
+    <section id="steps">
+      <h2>做法</h2>
+      <ol class="steps">
+        <li>第一步：一句話。</li>
+        <li>第二步。</li>
+        <li>第三步。</li>
+      </ol>
+    </section>
+
+    <section id="tips">
+      <h2>小訣竅</h2>
+      <ul>
+        <li>讓這道菜更好吃的重點。</li>
+      </ul>
+    </section>
+
+    <!-- 同部料理區由 site.js 產生，不要手動填寫 -->
+    <div id="dish-links"></div>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="../data/dishes.js"></script>
+  <script src="../assets/site.js"></script>
+</body>
+</html>

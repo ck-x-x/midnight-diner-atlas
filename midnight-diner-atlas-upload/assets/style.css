@@ -1,0 +1,224 @@
+/* 全站唯一的樣式表。顏色與間距只能使用下列變數。 */
+:root {
+  --night: #041440;
+  --counter: #0d1f55;
+  --counter-hi: #152a68;
+  --line: #2b3f7a;
+  --text: #f6f2e8;
+  --text-soft: #b4bcd6;
+  --lantern: #f8bc00;
+  --lantern-soft: rgba(248, 188, 0, 0.12);
+  --wood: #bb7700;
+  --wood-dark: #4a2c12;
+  --wood-mid: #6b4320;
+  --paper: #f6e7c1;
+  --shadow: #070403;
+  --radius: 10px;
+  --gap: 20px;
+  --font: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+  --font-ui: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--text);
+  font-family: var(--font-ui);
+  line-height: 1.8;
+}
+a { color: var(--lantern); }
+
+.page { max-width: 900px; margin: 0 auto; padding: 36px var(--gap) 60px; }
+h1 { font-family: var(--font); font-size: 2.1rem; line-height: 1.3; margin: 12px 0 8px; letter-spacing: 0.04em; }
+h2 {
+  font-family: var(--font);
+  font-size: 1.2rem;
+  margin: 40px 0 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+  color: var(--lantern);
+}
+.lead, .summary { color: var(--text-soft); font-size: 1.05rem; margin: 0 0 16px; }
+.crumb { font-size: 0.9rem; color: var(--text-soft); margin: 0 0 16px; }
+.jp { color: var(--text-soft); font-size: 0.88rem; }
+.time { color: var(--text-soft); font-size: 0.85rem; }
+
+/* 集數標示 */
+.ep {
+  display: inline-block;
+  background: var(--lantern);
+  color: var(--night);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 1px 10px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+}
+.tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  padding: 1px 10px;
+  border-radius: 99px;
+  border: 1px solid var(--wood);
+  color: var(--lantern);
+}
+.episode-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 18px;
+  background: var(--counter);
+  border-left: 5px solid var(--wood);
+  border-radius: var(--radius);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+.episode-box .big {
+  font-family: var(--font);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--lantern);
+  white-space: nowrap;
+}
+.meta { display: flex; align-items: center; gap: 12px; }
+
+/* 篩選 */
+.filters { display: grid; gap: 10px; margin: 24px 0 8px; }
+.filter-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.filter-row > span { font-size: 0.9rem; color: var(--text-soft); width: 3em; }
+.filter-row button {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 4px 14px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+.filter-row button.on { background: var(--lantern); border-color: var(--lantern); color: var(--night); }
+#count { font-size: 0.9rem; color: var(--text-soft); }
+
+/* 卡片 */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: var(--gap); }
+.card {
+  display: block;
+  padding: 18px;
+  background: var(--counter);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text);
+  text-decoration: none;
+  transition: transform 0.15s, border-color 0.15s, background 0.15s;
+}
+.card:hover { transform: translateY(-2px); border-color: var(--lantern); background: var(--counter-hi); }
+.card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.card h3 { font-family: var(--font); margin: 14px 0 0; font-size: 1.3rem; }
+.card p { margin: 4px 0 0; font-size: 0.93rem; color: var(--text-soft); }
+.card .time { margin-top: 10px; }
+.empty { color: var(--text-soft); }
+
+/* 料理頁內容 */
+.ingredients { list-style: none; padding: 0; margin: 0; }
+.ingredients li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 2px;
+  border-bottom: 1px dashed var(--line);
+}
+.ingredients span { color: var(--lantern); white-space: nowrap; }
+.steps { list-style: none; counter-reset: step; padding: 0; margin: 0; }
+.steps li {
+  counter-increment: step;
+  position: relative;
+  padding: 12px 14px 12px 56px;
+  margin-bottom: 8px;
+  background: var(--counter);
+  border-radius: var(--radius);
+}
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 14px;
+  top: 13px;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  background: var(--lantern);
+  color: var(--night);
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+#tips ul { margin: 0; padding: 14px 18px 14px 36px; background: var(--lantern-soft); border-radius: var(--radius); }
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 20px var(--gap);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 1.7rem; }
+  .page { padding-top: 24px; }
+  .episode-box { display: flex; }
+}
+
+/* 入口開場影片（只出現在首頁）：點一下播放 → 淡出進入首頁 */
+body.door-closed { overflow: hidden; }
+.entrance {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: var(--shadow);
+  font: inherit;
+  cursor: pointer;
+  overflow: hidden;
+  will-change: opacity;
+  transition: opacity 0.85s ease-out;
+}
+.door-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+.door-hint {
+  position: absolute;
+  bottom: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 22px;
+  background: var(--night);
+  color: var(--text);
+  border: 1px solid var(--lantern);
+  border-radius: 99px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  animation: hint 1.8s ease-in-out infinite;
+  transition: opacity 0.3s;
+}
+@keyframes hint { 50% { opacity: 0.45; } }
+
+.entrance.playing { cursor: default; }
+.entrance.playing .door-hint { opacity: 0; animation: none; }
+.entrance.enter { opacity: 0; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .entrance { transition-duration: 0.01s; }
+  .door-hint { animation: none; }
+}

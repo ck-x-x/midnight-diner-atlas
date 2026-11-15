@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>深夜食堂料理圖鑑</title>
+  <meta name="description" content="日劇《深夜食堂》料理筆記：每道料理出現在第幾部第幾集，以及在家怎麼做。">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-root=".">
+  <!-- 入口木門由 site.js 產生，不要手動填寫 -->
+  <div id="entrance"></div>
+  <header class="site-header" id="site-header"></header>
+
+  <main class="page">
+    <h1>深夜食堂料理圖鑑</h1>
+    <p class="lead">營業時間是深夜十二點到早上七點。這裡記下《深夜食堂》每一集的那道菜：出現在第幾部第幾集，還有在家怎麼做。</p>
+
+    <div class="filters">
+      <div class="filter-row"><span>播出</span><div class="filter-row" id="filter-season"></div></div>
+      <div class="filter-row"><span>類型</span><div class="filter-row" id="filter-category"></div></div>
+    </div>
+    <p id="count"></p>
+
+    <div class="grid" id="card-grid"></div>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="data/dishes.js"></script>
+  <script src="assets/site.js"></script>
+</body>
+</html>
